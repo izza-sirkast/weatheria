@@ -19,7 +19,7 @@ router.get('/find', async (req: Request, res: Response) => {
                 }
             }
         );
-        console.log('Data fetched successfully:', response.data);
+
         res.status(200).json(response.data);
     } catch (error) {
         console.error('Error fetching data:', error);

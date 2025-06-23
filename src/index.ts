@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 
 // Routes
 import locationsRoutes from './routes/location.routes';
+import conditionRoutes from './routes/condition.routes';
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/locations', locationsRoutes);
+app.use('/conditions', conditionRoutes)
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello, World!');
@@ -27,7 +29,7 @@ app.get('/country', async (req: Request, res: Response) => {
                 }
             }
         );
-        console.log('Data fetched successfully:', response.data);
+
         res.json(response.data);
     } catch (error) {
         console.error('Error fetching data:', error);
