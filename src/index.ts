@@ -19,24 +19,6 @@ app.get('/', (req: Request, res: Response) => {
     res.send('Hello, World!');
 });
 
-app.get('/country', async (req: Request, res: Response) => {
-    try {
-        const response = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete`,
-            {
-                params: {
-                    q: 'ban',
-                    apikey: process.env.ACCUWEATHER_API_KEY,
-                }
-            }
-        );
-
-        res.json(response.data);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        res.status(500).json({ error: 'Failed to fetch data' });
-    }
-});
-
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 })
